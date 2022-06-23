@@ -7,6 +7,11 @@ public class Main {
         virtBank.cadastrarConta();
         virtBank.cadastrarConta();
 
+        virtBank.listarClientes(virtBank.listaContas);
+
+        virtBank.exibirContaUnica(virtBank.acessarConta());
+
+
 
 
     }

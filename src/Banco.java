@@ -10,7 +10,7 @@ public class Banco extends Conta{
         super(cliente, tipoConta);
     }
 
-    public void cadastrarConta(){
+    public List<Conta> cadastrarConta(){
 
         System.out.println("Insira seu nome completo: ");
         String nome = dados.nextLine();
@@ -25,6 +25,7 @@ public class Banco extends Conta{
         Conta conta = new Conta(cliente, getTipoConta());
 
         listaContas.add(conta);
+        return listaContas;
     }
     public void tiparConta(char tipoConta){
 
@@ -34,21 +35,37 @@ public class Banco extends Conta{
             setTipoConta("Poupanca");
         }
     }
-    public Conta acessarConta() {
+    public int acessarConta() {
         System.out.println("-- Acesso Conta --");
         System.out.println("Insira seu Cpf (apenas numeros): ");
         String cpf = dados.nextLine();
 
-        Conta conta = null;
-        for (Conta cota : listaContas) {
-            if (listaContas.contains(cpf)) {
-                conta = listaContas.get(numeroConta);
+        int index = -1;
+        for (int i = 0; i < listaContas.size(); i++) {
+            if (listaContas.get(i).cliente.getCpf().contains(cpf)) {
+                index = i + 1;
+                break;
             }
-//            int index = listaContas.indexOf(cpf) -1;
-//            Conta conta = listaContas.get(index);
         }
-
-        return conta;
+        return index;
     }
 
+
+    public void listarClientes(List<Conta> conta){
+        System.out.println(" -- Contas -- ");
+        for (int i = 0; i < listaContas.size() ; i++) {
+            System.out.println(listaContas.get(i).cliente.toString());
+        }
+
+    }
+
+    public void exibirContaUnica(int index){
+        System.out.println(" -- Conta -- ");
+        listaContas.toString().indexOf(index);
+        System.out.println("Agencia: " + listaContas.get(index ).getNumeroAgencia());
+        System.out.println("Numero Conta: " + listaContas.get(index ).getNumeroConta());
+        System.out.println("Saldo: " + listaContas.get(index).getSaldo());
+
+    }
 }
+

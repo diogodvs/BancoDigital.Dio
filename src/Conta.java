@@ -10,7 +10,7 @@ public class Conta implements IConta{
     public Conta(Cliente cliente, String tipoConta) {
         this.numeroAgencia = NUMERO_AGENCIA;
         this.numeroConta = SEQUENCIAL++;
-        this.cliente = this.cliente;
+        this.cliente = cliente;
     }
     @Override
     public void sacar(double value) {
@@ -31,9 +31,8 @@ public class Conta implements IConta{
     @Override
     public void imprimirExtrato(Conta conta) {
 
-        System.out.println(" Extrato Conta " + conta.tipoConta);
-        System.out.println(" Nome Cliente: " + conta.cliente.getNome());
-        System.out.println(" Cpf Cliente: " + conta.cliente.getCpf());
+        System.out.println(" Extrato Conta " + conta.getTipoConta());
+        conta.cliente.toString();
         System.out.println(" Saldo : " + conta.saldo );
     }
 
